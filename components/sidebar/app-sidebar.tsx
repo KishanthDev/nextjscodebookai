@@ -41,8 +41,8 @@ import {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname();
   const { acceptChats } = useUserStatus();
-/*   const { newMsgCount, resetNewMsgCount } = useAIMessageHandler();
- */
+  /*   const { newMsgCount, resetNewMsgCount } = useAIMessageHandler();
+   */
   const user = {
     name: 'zoey',
     email: 'zoey@example.com',
@@ -57,9 +57,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   const links = [
     { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-  
- /*    { href: '/ai-assistants', icon: AIIcon, label: 'AI Assistants' },
-    { href: '/ai-assistants-users', icon: AIIcon, label: 'AI Assistant Users' }, */
+    { href: '/ai-agent', icon: MessageCircle, label: 'Agent Training' },
+
+    /*    { href: '/ai-assistants', icon: AIIcon, label: 'AI Assistants' },
+       { href: '/ai-assistants-users', icon: AIIcon, label: 'AI Assistant Users' }, */
   ];
 
   return (
@@ -77,9 +78,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <SidebarMenuButton
                   asChild
                   data-active={pathname === href}
-                /*   onClick={() => {
-                    if (href === "/chats") resetNewMsgCount();
-                  }} */
+                  /*   onClick={() => {
+                      if (href === "/chats") resetNewMsgCount();
+                    }} */
                   className="data-[active=true]:bg-gradient-to-r data-[active=true]:from-indigo-500 data-[active=true]:to-purple-600 data-[active=true]:text-white data-[active=true]:shadow-lg"
                 >
                   <Link href={href} className="flex items-center justify-between w-full">
@@ -99,7 +100,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     </div>
 
                     {/* Dot badge replaced by Lottie */}
-            
+
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
