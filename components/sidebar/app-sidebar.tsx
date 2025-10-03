@@ -4,11 +4,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useUserStatus } from "@/stores/useUserStatus";
-/* import { useAIMessageHandler } from "@/stores/aiMessageHandler";
-import Lottie from 'lottie-react';
-import dotNotificationAnim from "../../../data/icon.json"
-import { AIIcon } from "@/components/icons/AIIcon";  // adjust path as needed */
-
+import { Icon as CustomIcon } from './Icon'; // renamed to avoid confusion
 
 import { NavUser } from './nav-user';
 import { TeamSwitcher } from './team-switcher';
@@ -27,22 +23,16 @@ import {
 
 import {
   LayoutDashboard,
-  MessageCircle,
-  Bot,
-  Settings2,
   GalleryVerticalEnd,
   AudioWaveform,
   Command,
-  Send,
-  BadgeDollarSign,
-  ChartGanttIcon,
+  MessageCircle,
 } from 'lucide-react';
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname();
   const { acceptChats } = useUserStatus();
-  /*   const { newMsgCount, resetNewMsgCount } = useAIMessageHandler();
-   */
+
   const user = {
     name: 'zoey',
     email: 'zoey@example.com',
@@ -56,12 +46,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   ];
 
   const links = [
-    { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-    { href: '/ai-agent', icon: MessageCircle, label: 'Agent Training' },
-    { href: '/agent-bots', icon: Bot, label: 'Agent Bots' },
-    { href: '/openai-assistant-chat', icon: Send, label: 'Openai Assistant Chat' },
-    { href: '/ai-assistants', icon: Bot, label: 'AI Assistants' },
-    { href: '/ai-assistants-users', icon: Bot, label: 'AI Assistant Users' },
+    { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard', type: 'lucide' },
+    { href: '/ai-agent', icon: "/icons/chat-bot.png", label: 'Agent Training', type: 'custom' },
+    { href: '/agent-bots', icon: "/icons/bot.png", label: 'Agent Bots', type: 'custom' },
+    { href: '/openai-assistant-chat', icon: "/icons/chat-gpt.png", label: 'OpenAI Assistant Chat', type: 'custom' },
+    { href: '/ai-assistants', icon: "/icons/generative.png", label: 'AI Assistants', type: 'custom' },
+    { href: '/ai-assistants-users', icon: "/icons/text.png", label: 'AI Assistant Users', type: 'custom' },
   ];
 
   return (
@@ -74,34 +64,32 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <SidebarGroup>
           <SidebarMenu>
-            {links.map(({ href, icon: Icon, label }) => (
+            {links.map(({ href, icon, label, type }) => (
               <SidebarMenuItem key={href}>
                 <SidebarMenuButton
                   asChild
                   data-active={pathname === href}
-                  /*   onClick={() => {
-                      if (href === "/chats") resetNewMsgCount();
-                    }} */
                   className="data-[active=true]:bg-gradient-to-r data-[active=true]:from-indigo-500 data-[active=true]:to-purple-600 data-[active=true]:text-white data-[active=true]:shadow-lg"
                 >
                   <Link href={href} className="flex items-center justify-between w-full">
                     <div className="flex items-center">
-                      {/* Always show Lucide chat icon */}
                       {href === "/chats" ? (
                         <MessageCircle className="mr-2 w-[18px] h-[18px]" strokeWidth={1.5} />
-                      ) : href === "/ai-assistants" || href === "/ai-assistants-users" ? (
-                        <Icon
-                          className="mr-2 w-[18px] h-[18px]"
+                      ) : type === "custom" ? (
+                        <CustomIcon
+                          src={icon as string}
+                          size={18}
+                          className="mr-2"
+                          active={pathname === href}
                         />
                       ) : (
-                        <Icon className="mr-2 w-[18px] h-[18px]" strokeWidth={1.5} />
+                        React.createElement(icon as React.ComponentType<{ className?: string; strokeWidth?: number }>, {
+                          className: "mr-2 w-[18px] h-[18px]",
+                          strokeWidth: 1.5,
+                        })
                       )}
-
                       <span className="truncate">{label}</span>
                     </div>
-
-                    {/* Dot badge replaced by Lottie */}
-
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
