@@ -21,17 +21,14 @@ export function Icon({
 }: IconProps) {
   const { theme } = useTheme();
 
-  // Base color depending on theme
+  // Default color (depends on theme)
   const baseColor =
     theme === "dark"
       ? "brightness-0 invert" // white in dark mode
-      : "brightness-0"; // black in light mode
+      : "brightness-0";       // black in light mode
 
-  // Active color (inverted logic)
-  const activeColor =
-    theme === "dark"
-      ? "brightness-0 invert" // black in dark mode
-      : "brightness-0"; // white in light mode
+  // Active color (always white regardless of theme)
+  const activeColor = "brightness-0 invert";
 
   return (
     <Image
@@ -44,4 +41,5 @@ export function Icon({
     />
   );
 }
+
 export default Icon;
