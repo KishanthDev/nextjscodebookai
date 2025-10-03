@@ -58,9 +58,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const links = [
     { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
     { href: '/ai-agent', icon: MessageCircle, label: 'Agent Training' },
-
-    /*    { href: '/ai-assistants', icon: AIIcon, label: 'AI Assistants' },
-       { href: '/ai-assistants-users', icon: AIIcon, label: 'AI Assistant Users' }, */
+    { href: '/agent-bots', icon: Bot, label: 'Agent Bots' },
   ];
 
   return (
