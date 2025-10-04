@@ -48,6 +48,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   const links = [
     { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard', type: 'lucide' },
+    { href: '/manage-assistant', icon: MessageCircle, label: 'Manage Assistant', type: 'lucide' },
     { href: '/ai', icon: Bot, label: 'AI', type: 'lucide' },
     { href: '/ai-agent', icon: "/icons/chat-bot.png", label: 'Agent Training', type: 'custom' },
     { href: '/agent-bots', icon: "/icons/bot.png", label: 'Agent Bots', type: 'custom' },
