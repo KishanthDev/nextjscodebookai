@@ -27,6 +27,7 @@ import {
   AudioWaveform,
   Command,
   MessageCircle,
+  Bot,
 } from 'lucide-react';
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -47,6 +48,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   const links = [
     { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard', type: 'lucide' },
+    { href: '/ai', icon: Bot, label: 'AI', type: 'lucide' },
     { href: '/ai-agent', icon: "/icons/chat-bot.png", label: 'Agent Training', type: 'custom' },
     { href: '/agent-bots', icon: "/icons/bot.png", label: 'Agent Bots', type: 'custom' },
     { href: '/openai-assistant-chat', icon: "/icons/chat-gpt.png", label: 'OpenAI Assistant Chat', type: 'custom' },
