@@ -1,9 +1,9 @@
-import WebsitesTab from './websites/page';
-import PdfTrainTab from './pdf/page';
-import QATab from './qa/page';
-import ArticlesTab from './articles/page';
-import FlowsTab from './flows/page';
-import StatsTab from './training-stats/page';
+import WebsitesTab from './tabs/WebsitesTab';
+import PdfTrainTab from './tabs/PdfTab';
+import QATab from './tabs/QaTab';
+import ArticlesTab from './tabs/ArticlesTab';
+import FlowsTab from './tabs/FlowsTab';
+import StatsTab from './tabs/StatsTab';
 
 export default function TabsContent({ tab }: { tab: string }) {
     switch (tab) {

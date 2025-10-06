@@ -4,15 +4,17 @@ import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import TabsContent from '@/components/agent-training/TabsContent';
 
-export default function AIAgentPage() {
+function PageContent() {
   const searchParams = useSearchParams();
   const tab = searchParams.get('tab') || 'websites';
 
+  return <TabsContent tab={tab} />;
+}
+
+export default function AIAgentPage() {
   return (
-    <div>
-      <Suspense fallback={<div className="text-center py-10">Loading tab...</div>}>
-        <TabsContent tab={tab} />
-      </Suspense>
-    </div>
+    <Suspense fallback={<div className="text-center py-10">Loading content...</div>}>
+      <PageContent />
+    </Suspense>
   );
 }
